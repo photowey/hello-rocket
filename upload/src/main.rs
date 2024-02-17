@@ -27,26 +27,16 @@ mod tests;
 // ----------------------------------------------------------------
 
 // Try visiting:
-// http://127.0.0.1:8000/hello/world
-#[get("/world")]
+// http://127.0.0.1:8000/upload/greeting
+#[get("/greeting")]
 fn world() -> &'static str {
-    "Hello, world!"
+    "Hello, upload!"
 }
 
 // ----------------------------------------------------------------
 
-/*
-
-#[launch]
-fn rocket() -> _ {
-    rocket::build()
-        .mount("/hello", routes![world])
-}
-
-*/
-
 fn rocket_setup() -> Rocket<Build> {
-    rocket::build().mount("/hello", routes![world])
+    rocket::build().mount("/upload", routes![world])
 }
 
 #[rocket::main]
