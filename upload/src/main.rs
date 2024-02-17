@@ -26,17 +26,22 @@ mod tests;
 
 // ----------------------------------------------------------------
 
+mod multipart;
+
+// ----------------------------------------------------------------
+
 // Try visiting:
-// http://127.0.0.1:8000/upload/greeting
+// GET http://127.0.0.1:8000/upload/greeting
 #[get("/greeting")]
 fn world() -> &'static str {
     "Hello, upload!"
 }
 
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 fn rocket_setup() -> Rocket<Build> {
-    rocket::build().mount("/upload", routes![world])
+    rocket::build().mount("/upload", routes![world, multipart::upload])
 }
 
 #[rocket::main]
